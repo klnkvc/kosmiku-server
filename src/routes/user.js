@@ -3,7 +3,7 @@ const router = express.Router();
 const UserController = require("../controller/user.js");
 
 //CREATE
-router.post("/", UserController.createNewUser);
+router.post("/register", UserController.createNewUser);
 //READ
 router.get("/", UserController.getAllUser);
 //UPDATE
