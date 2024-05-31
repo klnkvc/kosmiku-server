@@ -14,6 +14,23 @@ const getAllUser = async (req, res) => {
     });
   }
 };
+
+const getUserData = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await UserModel.getByEmailPassword(email, password);
+    res.json({
+      message: "Data Founded",
+      data: user[0],
+    });
+  } catch (error) {
+    res.status(404).json({
+      message: "Server Error",
+      serverMessage: error,
+    });
+  }
+};
+
 const createNewUser = async (req, res) => {
   console.log(req.body);
   const { body } = req;
@@ -59,4 +76,10 @@ const deleteUser = async (req, res) => {
     });
   } catch (error) {}
 };
-module.exports = { getAllUser, createNewUser, updateUser, deleteUser };
+module.exports = {
+  getAllUser,
+  createNewUser,
+  updateUser,
+  deleteUser,
+  getUserData,
+};
