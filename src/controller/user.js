@@ -1,4 +1,6 @@
 const UserModel = require("../model/user.js");
+const fs = require("fs");
+const path = require("path");
 
 const getAllUser = async (req, res) => {
   try {
@@ -13,6 +15,19 @@ const getAllUser = async (req, res) => {
       serverMessage: error,
     });
   }
+};
+
+const getAvatars = (req, res) => {
+  const avatarsDir = path.join(__dirname, "../public/avatars");
+  fs.readdir(avatarsDir, (err, files) => {
+    if (err) {
+      return res.status(500).send("Unable to scan directory");
+    }
+    const avatars = files.map(
+      (file) => `http://localhost:8081/public/avatars/${file}`
+    );
+    res.json(avatars);
+  });
 };
 
 const getUserData = async (req, res) => {
@@ -32,7 +47,8 @@ const getUserData = async (req, res) => {
 };
 
 const createNewUser = async (req, res) => {
-  console.log(req.body);
+  console.log("ini req.body :", req.body);
+  console.log("ini res :", res);
   const { body } = req;
   try {
     await UserModel.createNewUser(body);
@@ -82,4 +98,5 @@ module.exports = {
   updateUser,
   deleteUser,
   getUserData,
+  getAvatars,
 };

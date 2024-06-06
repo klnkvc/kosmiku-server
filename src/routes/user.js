@@ -6,6 +6,7 @@ const UserController = require("../controller/user.js");
 router.post("/register", UserController.createNewUser);
 //READ
 router.get("/", UserController.getAllUser);
+router.get("/avatars", UserController.getAvatars);
 //LOGIN
 router.post("/login", UserController.getUserData);
 //UPDATE
