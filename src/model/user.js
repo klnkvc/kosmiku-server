@@ -16,7 +16,7 @@ const getByEmailPassword = (email, password) => {
 };
 
 const createNewUser = (body) => {
-  const sqlQuery = `INSERT INTO user (avatar, nama_lengkap, alamat_email, jenjang_pendidikan, tanggal_lahir, password) VALUES ('${body.avatarUser}','${body.nama_lengkap}', '${body.alamat_email}', '${body.jenjang_pendidikan}', '${body.tanggal_lahir}', '${body.password}')`;
+  const sqlQuery = `INSERT INTO user (avatar, nama_lengkap, alamat_email, jenjang_pendidikan, tanggal_lahir, password) VALUES ('${body.avatar}','${body.nama_lengkap}', '${body.alamat_email}', '${body.jenjang_pendidikan}', '${body.tanggal_lahir}', '${body.password}')`;
   return db.execute(sqlQuery);
 };
 
