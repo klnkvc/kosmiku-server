@@ -48,7 +48,6 @@ const getUserData = async (req, res) => {
 
 const createNewUser = async (req, res) => {
   console.log("ini req.body :", req.body);
-  console.log("ini res :", res);
   const { body } = req;
   try {
     await UserModel.createNewUser(body);
