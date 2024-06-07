@@ -21,7 +21,7 @@ const createNewUser = (body) => {
 };
 
 const updateUser = (body, id) => {
-  const sqlQuery = `UPDATE user SET nama="${body.nama}", alamat="${body.alamat}", umur=${body.umur} WHERE ID=${id}`;
+  const sqlQuery = `UPDATE user SET nama_lengkap="${body.nama_lengkap}", avatar='${body.avatar}' WHERE userID=${id}`;
   return db.execute(sqlQuery);
 };
 
