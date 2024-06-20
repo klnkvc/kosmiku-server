@@ -30,10 +30,11 @@ const getAvatars = (req, res) => {
   });
 };
 
-const getUserData = async (req, res) => {
+const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await UserModel.getByEmailPassword(email, password);
+    req.sess;
     res.json({
       message: "Data Founded",
       data: user[0],
@@ -96,6 +97,6 @@ module.exports = {
   createNewUser,
   updateUser,
   deleteUser,
-  getUserData,
+  login,
   getAvatars,
 };

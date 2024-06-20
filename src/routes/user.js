@@ -7,8 +7,8 @@ router.post("/register", UserController.createNewUser);
 //READ
 router.get("/", UserController.getAllUser);
 router.get("/avatars", UserController.getAvatars);
-//LOGIN
-router.post("/login", UserController.getUserData);
+//LOGINs
+router.post("/login", UserController.login);
 //UPDATE
 router.patch("/:id", UserController.updateUser);
 // DELETE

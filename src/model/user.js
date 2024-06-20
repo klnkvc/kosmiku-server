@@ -5,6 +5,10 @@ const getAll = () => {
   return db.execute(sqlQuery);
 };
 
+getByName = (email) => {
+  const sqlQuery = "SELECT * FROM user WHERE alamat_email = ?";
+};
+
 const getByEmailPassword = (email, password) => {
   const sqlQuery = `SELECT * FROM user WHERE alamat_email = ? AND password = ?`;
   return db.execute(sqlQuery, [email, password]).then(([rows]) => {
