@@ -9,12 +9,12 @@ require("dotenv").config();
 const PORT = process.env.PORT;
 
 const app = express();
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: process.env.APP_URL, credentials: true }));
 app.use(middlewareLogRequest);
 app.use(express.json()); //mengizinkan request body berupa json
 app.use(
   session({
-    secret: "your-secret-key",
+    secret: process.env.SECRETKEY,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -24,10 +24,10 @@ app.use(
   })
 );
 //middleware untuk melayani file statis
-app.use("/public", express.static(path.join(__dirname, "public")));
+app.use("/api/v1/public", express.static(path.join(__dirname, "public")));
 
-app.use("/user", userRoutes);
-app.use("/auth", authRoutes);
+app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/auth", authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening from port ${PORT}`);
